@@ -6,9 +6,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import seedu.duke.storage.Storage;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.xml.crypto.Data;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -29,13 +28,21 @@ public class AnimeStorage {
     //    animeList.printAll();
     //}
 
-    public AnimeStorage(String fileFolder) {
+
+
+    public AnimeStorage(String fileFolder) throws IOException {
         // Set log levels
         LOGGER.setLevel(Level.WARNING);
-
+        System.out.println(RELATIVE_DIR);
         LOGGER.info("Loading filenames from DataSource folder.");
         this.dataFile = new File(prepareFile(fileFolder));
         pathnames = dataFile.list();
+        String test = getData("/Data/AniList-Data1.json");
+        System.out.println(test);
+        System.out.println(dataFile.getPath());
+        for(String path: pathnames) {
+            System.out.println(path);
+        }
         LOGGER.info("Loading filenames successful.");
     }
 
@@ -128,5 +135,25 @@ public class AnimeStorage {
                     animeEpisode);
             animeDataList.add(anime);
         }
+    }
+
+    public  String getData(String filename) throws IOException {
+
+        InputStream inputStream = AnimeStorage.class.getResourceAsStream(filename);
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        String line = "";
+        String datafromjson = "";
+        try {
+            while ((line = bufferedReader.readLine()) != null) {
+                datafromjson += line;
+            }
+            bufferedReader.close();
+            inputStreamReader.close();
+            inputStream.close();
+        } catch (IOException e) {
+            throw e;
+        }
+        return datafromjson;
     }
 }

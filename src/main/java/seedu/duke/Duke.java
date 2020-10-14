@@ -19,7 +19,7 @@ import java.util.Scanner;
 public class Duke {
     private static final String USER_PROFILE_FILE_NAME = "userprofile.txt";
     private static final String WATCHLIST_FILE_NAME = "watchlist.txt";
-    private static final String ANIME_DATA_SOURCE_FOLDER = "/data/AniListData";
+    private static final String ANIME_DATA_SOURCE_FOLDER = "/src/main/resources/Data";
 
     private final Ui ui;
     private final Parser parser;
