@@ -12,7 +12,10 @@ for /f "tokens=*" %%a in (
     set jarloc=%%a
 )
 
+set dataDir="data"
+
 cd ..\..
+rmdir /s /q %dataDir% 2>nul
 java -jar build\libs\%jarloc% < text-ui-test\input.txt > text-ui-test\ACTUAL.TXT
 
 cd text-ui-test

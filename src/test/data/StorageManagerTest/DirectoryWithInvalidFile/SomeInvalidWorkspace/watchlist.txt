@@ -1,0 +1,10 @@
+a |
+a | [[[]]]
+| []
+| [, , , , ,]
+duplicate | []
+duplicate | []
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+hello /|\ []
+a | [testing, this, thing]
+a | [1, 2, test?]

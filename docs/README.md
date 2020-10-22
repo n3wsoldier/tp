@@ -1,7 +1,10 @@
 
 # AniChan
 
-AniChan is an all-rounded tool to effectively create and organize anime lists with viewing statistics, efficiency-focused features, and tools to improve anime-watching experience.
+AniChan is an all-rounded tool for Anime translators and professionals. 
+It features a suite of functionality that can help reduce administration workload, 
+as well as improve translation efficiency and accuracy.
+
 
 Useful links:
 * [User Guide](UserGuide.md)
