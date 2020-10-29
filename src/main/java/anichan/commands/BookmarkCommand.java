@@ -43,6 +43,10 @@ public class BookmarkCommand extends Command {
     private static final String BOOKMARK_NOTE_FORBIDDEN_CHAR = "~";
     public static final String EPISODE_HEADER = "Current Episode: ";
     public static final String NOTES_HEADER = "Notes for anime:";
+    public static final String ANIME_ID_ZERO_ERROR = " Anime index start from 1.";
+    public static final String NOTE_ID_ZERO_ERROR = " Note index start from 1.";
+    public static final String BOOKMARK_ID_ZERO_ERROR = " Bookmark index start from 1.";
+    public static final int ZERO_PARAM = 0;
     private int bookmarkIndex;
     private int animeIndex;
 
@@ -292,9 +296,14 @@ public class BookmarkCommand extends Command {
      */
     private void checkBookmarkIndex(Bookmark bookmark) throws AniException {
         //Bookmark index is one based numbering
-        if (bookmarkIndex > bookmark.getBookmarkSize()) {
+        if (bookmarkIndex > bookmark.getBookmarkSize() ) {
             String invalidBookmarkIndex = "Bookmark index " + bookmarkIndex + BOOKMARK_ERROR_MESSAGE
                     + System.lineSeparator() + BOOKMARK_ID_ERROR;
+            LOGGER.log(Level.WARNING, BOOKMARK_EXECUTE_ERROR_HEADER + invalidBookmarkIndex);
+            throw new AniException(invalidBookmarkIndex);
+        } else if (bookmarkIndex == ZERO_PARAM){
+            String invalidBookmarkIndex = "Bookmark index " + bookmarkIndex + BOOKMARK_ERROR_MESSAGE
+                    + System.lineSeparator() + BOOKMARK_ID_ZERO_ERROR;
             LOGGER.log(Level.WARNING, BOOKMARK_EXECUTE_ERROR_HEADER + invalidBookmarkIndex);
             throw new AniException(invalidBookmarkIndex);
         }
@@ -340,6 +349,11 @@ public class BookmarkCommand extends Command {
                     + System.lineSeparator() + NOTES_ID_ERROR;
             LOGGER.log(Level.WARNING, BOOKMARK_EXECUTE_ERROR_HEADER + invalidBookmarkIndex);
             throw new AniException(invalidBookmarkIndex);
+        } else if (noteIndex == ZERO_PARAM) {
+            String invalidBookmarkIndex = "Notes index " + noteIndex + BOOKMARK_ERROR_MESSAGE
+                    + System.lineSeparator() + NOTE_ID_ZERO_ERROR;
+            LOGGER.log(Level.WARNING, BOOKMARK_EXECUTE_ERROR_HEADER + invalidBookmarkIndex);
+            throw new AniException(invalidBookmarkIndex);
         }
     }
 
@@ -354,6 +368,11 @@ public class BookmarkCommand extends Command {
         if (animeIndex > animeData.getSize()) {
             String invalidAnimeIndex = "Anime index " + animeIndex + BOOKMARK_ERROR_MESSAGE
                     + System.lineSeparator() + ANIME_ID_ERROR;
+            LOGGER.log(Level.WARNING, BOOKMARK_EXECUTE_ERROR_HEADER + invalidAnimeIndex);
+            throw new AniException(invalidAnimeIndex);
+        } else if (animeIndex == ZERO_PARAM) {
+            String invalidAnimeIndex = "Anime index " + animeIndex + BOOKMARK_ERROR_MESSAGE
+                    + System.lineSeparator() + ANIME_ID_ZERO_ERROR;
             LOGGER.log(Level.WARNING, BOOKMARK_EXECUTE_ERROR_HEADER + invalidAnimeIndex);
             throw new AniException(invalidAnimeIndex);
         }
